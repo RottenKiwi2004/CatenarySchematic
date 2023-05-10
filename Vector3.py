@@ -47,6 +47,9 @@ class Vector3:
     def tupleInt(self, n=0) -> tuple[int, int, int]:
         return math.floor(self.x), math.floor(self.y), math.floor(self.z)
 
+    def lerp(self, other: Vector3, ratio: float) -> Vector3:
+        return self + (other - self) * ratio
+
     def __add__(self, other: Vector3) -> Vector3:
         return Vector3(self.x + other.x, self.y + other.y, + self.z + other.z)
 
@@ -58,6 +61,9 @@ class Vector3:
 
     def __rsub__(self, other):
         return other + (-self)
+
+    def __mul__(self, amount: float):
+        return Vector3(self.x * amount, self.y * amount, self.z * amount)
 
     def __truediv__(self, other: float):
         return Vector3(self.x / other, self.y / other, self.z / other)
